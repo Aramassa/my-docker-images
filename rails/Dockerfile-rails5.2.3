@@ -1,0 +1,39 @@
+FROM library/ruby:2.6.3-alpine3.9
+
+WORKDIR /app
+
+RUN apk update && \
+    apk upgrade && \
+    apk add --update --no-cache \
+      build-base \
+      curl-dev \
+      linux-headers \
+      libxml2-dev \
+      libxslt-dev \
+      postgresql-dev \
+      mysql-dev \
+      sqlite-dev \
+      ruby-dev \
+      yaml-dev \
+      zlib-dev && \
+    apk add --update --no-cache \
+      bash \
+      curl \
+      pcre \
+      nodejs \
+      libstdc++ \
+      libxml2-dev \
+      libxslt-dev \
+      mysql-client \
+      sqlite-libs \
+      ruby-json \
+      tzdata \
+      yaml && \
+    apk add --update --no-cache \
+      bash \
+      git \
+      openssh \
+      postgresql \
+      ruby-json \
+      tzdata \
+      yaml
