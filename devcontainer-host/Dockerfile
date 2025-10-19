@@ -6,6 +6,16 @@ RUN apk add --no-cache openssh-server && \
     mkdir -p /run/sshd && \
     echo 'root:password' | chpasswd
 
+# Install dependencies for VS Code Server
+RUN apk add --no-cache \
+    libstdc++ \
+    libgcc \
+    musl \
+    bash \
+    curl \
+    wget \
+    ca-certificates
+
 # Configure sshd
 RUN echo 'Port 22' > /etc/ssh/sshd_config && \
     echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config && \
