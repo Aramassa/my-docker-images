@@ -14,7 +14,9 @@ RUN apk add --no-cache \
     bash \
     curl \
     wget \
-    ca-certificates
+    ca-certificates \
+    nodejs \
+    npm
 
 # Configure sshd
 RUN echo 'Port 22' > /etc/ssh/sshd_config && \
