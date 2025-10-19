@@ -5,7 +5,10 @@ RUN apk add --no-cache openssh-server && \
     ssh-keygen -A && \
     mkdir -p /run/sshd && \
     sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
-    echo 'root:password' | chpasswd
+    echo 'root:password' | chpasswd && \
+    echo 'AllowTcpForwarding yes' >> /etc/ssh/sshd_config && \
+    echo 'GatewayPorts yes' >> /etc/ssh/sshd_config && \
+    echo 'PermitTunnel yes' >> /etc/ssh/sshd_config
 
 # Create entrypoint script
 RUN echo '#!/bin/sh' > /entrypoint.sh && \
